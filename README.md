@@ -19,6 +19,14 @@ To power the Pi, you can apply power to pin 40 - see pinout at https://www.raspb
 To read the serial output, instead of using the built-in USB, you can use a USB serial dongle connected to pins 1, 2 and 3 on the Pico. I used https://www.amazon.co.uk/DSD-TECH-adapter-FT232RL-Compatible/dp/B07BBPX8B8/ref=pd_lpo_1?pd_rd_i=B07BBPX8B8&psc=1
 
 
+### Wiring Diagram
+
+Below shows how to wire up both using the RP2040 as the Keyboard host as well as using 2 picos. I recommend the [Waveshare RP2040 Zero](https://www.waveshare.com/rp2040-zero.htm) as it has USB, so if you have a USB C Keyboard (or a USB-A -> USB-C adapter lying around). This makes the setup so much simpler.  
+
+![wiring diagram](https://github.com/Quantum-264/hid-over-uart-keyboard/blob/main/usb-keyboard_bb.png?raw=true)
+
+> Note: I am using the PicoVision as my CPU, I can leave the power and UART connected when programming the RP2040. I have not tested this direct into a Pico, I don't think it will conflict as unlike an Arduino the USB Boot mode doesn't work over UART. If it does conflict, just unplug V-BUS or put a switch on V-BUS for programming mode. 
+
 ## What did I change. 
 
 The fundamental change in this project came from my desire to switch away from ASCII over UART. I decided instead to send a custom payload over UART
